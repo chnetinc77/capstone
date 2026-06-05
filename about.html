@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="description" content="About Capstone Invest Group — 17 years of expertise. Headquartered in London's Canary Wharf, with a presence in Singapore." />
+  <meta name="theme-color" content="#0A0E1A" />
+  <title>About Us — Capstone Invest Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@200;300;400;500;600&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0A0E1A;
+      --navy-mid: #0F1629;
+      --gold: #C9A84C;
+      --gold-light: #E2C47A;
+      --white: #F5F3EE;
+      --white-dim: rgba(245,243,238,0.55);
+      --white-faint: rgba(245,243,238,0.12);
+      --line: rgba(201,168,76,0.25);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+
+    /* ── Cursor ── */
+    .cursor { position: fixed; top: 0; left: 0; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; transition: width .3s, height .3s; }
+    .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); opacity: .6; transition: width .3s, height .3s, opacity .3s; }
+    .cursor.expand { width: 18px; height: 18px; }
+    .cursor-ring.expand { width: 60px; height: 60px; opacity: .3; }
+
+    /* ── Nav ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 28px 52px; }
+    nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,14,26,0.96) 0%, transparent 100%); pointer-events: none; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.05rem; letter-spacing: .18em; text-transform: uppercase; color: var(--white); text-decoration: none; position: relative; z-index: 1; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; position: relative; z-index: 1; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 300; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color .3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { position: relative; z-index: 1; font-family: 'Barlow Condensed', sans-serif; font-weight: 400; font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--line); padding: 10px 22px; text-decoration: none; transition: background .3s, color .3s; }
+    .nav-cta:hover { background: var(--gold); color: var(--navy); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; position: relative; z-index: 301; }
+    .hamburger span { width: 26px; height: 1px; background: var(--white); transition: transform .4s ease, opacity .4s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── Mobile menu ── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(10,14,26,0.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: flex-start; padding: 100px 48px 80px; opacity: 0; transform: translateX(100%); transition: opacity .45s ease, transform .45s cubic-bezier(.77,0,.175,1); }
+    .mobile-menu.open { opacity: 1; transform: translateX(0); }
+    .mobile-menu-links { list-style: none; margin-bottom: 48px; width: 100%; }
+    .mobile-menu-links li { border-bottom: 1px solid var(--line); }
+    .mobile-menu-links a { display: block; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2rem,7vw,3rem); color: var(--white); text-decoration: none; padding: 20px 0; letter-spacing: .04em; transition: color .3s, padding-left .3s; }
+    .mobile-menu-links a:hover { color: var(--gold); padding-left: 12px; }
+    .mobile-menu-cta { font-family: 'Barlow Condensed', sans-serif; font-weight: 400; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--line); padding: 14px 30px; text-decoration: none; transition: background .3s, color .3s; }
+    .mobile-menu-cta:hover { background: var(--gold); color: var(--navy); }
+    .mobile-menu-line { position: absolute; bottom: 80px; left: 48px; font-family: 'Barlow Condensed', sans-serif; font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--white-dim); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .15s; }
+    .reveal-delay-2 { transition-delay: .3s; }
+    .reveal-delay-3 { transition-delay: .45s; }
+    .reveal-delay-4 { transition-delay: .6s; }
+
+    /* ── Helpers ── */
+    .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 300; font-size: .6rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .page-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: flex-end;
+      padding: 0 52px 100px;
+      background: var(--navy);
+      overflow: hidden;
+    }
+    /* Subtle diagonal line grid */
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          -55deg,
+          transparent,
+          transparent 80px,
+          rgba(201,168,76,0.03) 80px,
+          rgba(201,168,76,0.03) 81px
+        );
+      pointer-events: none;
+    }
+    /* Gold radial glow */
+    .page-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 60% at 65% 55%, rgba(201,168,76,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 1400px; width: 100%; margin: 0 auto; }
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 300; font-size: .62rem;
+      letter-spacing: .35em; text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+      opacity: 0; animation: fadeUp .8s ease forwards .2s;
+    }
+    .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(3.5rem, 8.5vw, 9rem);
+      line-height: .9; color: var(--white); margin-bottom: 48px;
+      opacity: 0; animation: fadeUp .9s ease forwards .35s;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); display: block; }
+    .hero-meta {
+      display: flex; align-items: flex-start; gap: 80px;
+      opacity: 0; animation: fadeUp .8s ease forwards .55s;
+    }
+    .hero-stat { }
+    .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+    .hero-stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: var(--white-dim); }
+    .hero-divider { width: 1px; background: var(--line); align-self: stretch; }
+    .hero-desc { max-width: 420px; font-size: .9rem; line-height: 1.9; color: var(--white-dim); }
+
+    /* Large deco word */
+    .hero-deco-word {
+      position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(12rem, 22vw, 20rem);
+      font-weight: 300; color: rgba(201,168,76,0.03); line-height: 1;
+      pointer-events: none; user-select: none; white-space: nowrap;
+      letter-spacing: -.03em;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 100px; right: 52px;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeUp .8s ease forwards .9s;
+    }
+    .scroll-hint span { font-family: 'Barlow Condensed', sans-serif; font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: var(--white-dim); writing-mode: vertical-rl; }
+    .scroll-hint-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
+
+    /* ══════════════════════════════════════
+       WHAT WE DO / CORE SERVICES
+    ══════════════════════════════════════ */
+    .services-section {
+      padding: 140px 52px;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .services-inner { max-width: 1400px; margin: 0 auto; }
+    .services-header { margin-bottom: 90px; }
+    .services-headline {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.05; color: var(--white);
+    }
+    .services-headline em { font-style: italic; color: var(--gold); }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); }
+    .service-card {
+      padding: 52px 44px;
+      border-right: 1px solid var(--line);
+      position: relative; overflow: hidden;
+      transition: background .4s;
+    }
+    .service-card:last-child { border-right: none; }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform .5s ease;
+    }
+    .service-card:hover { background: rgba(201,168,76,.03); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-card-tag {
+      font-family: 'Barlow Condensed', sans-serif; font-size: .6rem;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px; display: flex; align-items: center; gap: 10px;
+    }
+    .service-card-tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+    .service-card-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: 2.2rem; color: var(--white); margin-bottom: 28px; line-height: 1.1;
+    }
+    .service-card-body { font-size: .85rem; line-height: 1.95; color: var(--white-dim); margin-bottom: 40px; }
+    .service-card-link {
+      font-family: 'Barlow Condensed', sans-serif; font-size: .65rem;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--gold);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      transition: gap .3s;
+    }
+    .service-card-link::after { content: '→'; }
+    .service-card-link:hover { gap: 16px; }
+
+    /* ══════════════════════════════════════
+       SELECTION CRITERIA
+    ══════════════════════════════════════ */
+    .criteria-section { padding: 140px 52px; background: var(--navy); border-bottom: 1px solid var(--line); }
+    .criteria-inner { max-width: 1400px; margin: 0 auto; }
+    .criteria-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 90px; align-items: end; }
+    .criteria-headline {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.05; color: var(--white);
+    }
+    .criteria-headline em { font-style: italic; color: var(--gold); }
+    .criteria-sub { font-size: .88rem; line-height: 1.9; color: var(--white-dim); }
+
+    .criteria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); }
+    .criteria-item {
+      padding: 44px 36px;
+      border-right: 1px solid var(--line);
+      transition: background .4s;
+      position: relative;
+    }
+    .criteria-item:last-child { border-right: none; }
+    .criteria-item:hover { background: rgba(201,168,76,.03); }
+    .criteria-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300;
+      color: rgba(201,168,76,.15); line-height: 1; margin-bottom: 20px;
+      transition: color .4s;
+    }
+    .criteria-item:hover .criteria-num { color: var(--gold); }
+    .criteria-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: .82rem;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--white);
+      margin-bottom: 16px;
+    }
+    .criteria-body { font-size: .82rem; line-height: 1.8; color: var(--white-dim); }
+
+    /* ══════════════════════════════════════
+       TRACK RECORD / STATS
+    ══════════════════════════════════════ */
+    .stats-section { padding: 140px 52px; background: var(--navy-mid); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+    .stats-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .stats-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+    .stats-header { text-align: center; margin-bottom: 90px; }
+    .stats-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .stats-eyebrow::before, .stats-eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--gold); }
+    .stats-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); }
+    .stats-title em { font-style: italic; color: var(--gold); }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); }
+    .stat-block {
+      padding: 60px 44px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+      position: relative; overflow: hidden;
+      transition: background .4s;
+    }
+    .stat-block:last-child { border-right: none; }
+    .stat-block::before { content: ''; position: absolute; inset: 0; background: rgba(201,168,76,.04); opacity: 0; transition: opacity .4s; }
+    .stat-block:hover::before { opacity: 1; }
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(3rem, 5vw, 5rem); color: var(--gold); line-height: 1;
+      margin-bottom: 16px;
+    }
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: .72rem;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--white);
+      margin-bottom: 12px;
+    }
+    .stat-desc { font-size: .75rem; color: var(--white-dim); line-height: 1.7; }
+
+    /* ══════════════════════════════════════
+       CTA
+    ══════════════════════════════════════ */
+    .cta-section { padding: 140px 52px; background: var(--navy); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 80px; position: relative; z-index: 1; }
+    .cta-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+    .cta-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.5rem, 5vw, 5rem); line-height: .95; color: var(--white); margin-bottom: 32px; }
+    .cta-title em { font-style: italic; color: var(--gold); }
+    .cta-desc { font-size: .9rem; line-height: 1.9; color: var(--white-dim); max-width: 560px; }
+    .btn-primary { font-family: 'Barlow Condensed', sans-serif; font-weight: 400; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 20px 44px; text-decoration: none; transition: background .3s, transform .2s; display: inline-block; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer { background: rgba(5,7,13,.98); border-top: 1px solid var(--line); padding: 40px 52px; margin-bottom: 36px; }
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--white-faint); }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.1rem; letter-spacing: .15em; text-transform: uppercase; color: var(--white); margin-bottom: 12px; }
+    .footer-brand span { color: var(--gold); }
+    .footer-tagline { font-size: .78rem; color: var(--white-dim); line-height: 1.7; }
+    .footer-col-title { font-family: 'Barlow Condensed', sans-serif; font-size: .62rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { margin-bottom: 10px; }
+    .footer-nav-list a { font-size: .8rem; color: var(--white-dim); text-decoration: none; transition: color .3s; }
+    .footer-nav-list a:hover { color: var(--gold); }
+    .footer-contact-item { font-size: .8rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 14px; }
+    .footer-contact-item a { color: var(--white-dim); text-decoration: none; transition: color .3s; }
+    .footer-contact-item a:hover { color: var(--gold); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .footer-legal { font-size: .68rem; color: rgba(245,243,238,.3); line-height: 1.7; max-width: 520px; }
+    .footer-copy { font-size: .68rem; color: rgba(245,243,238,.3); }
+
+    /* ── Ticker ── */
+    .ticker { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: rgba(10,14,26,0.92); border-top: 1px solid var(--line); height: 36px; display: flex; align-items: center; overflow: hidden; }
+    .ticker-label { flex-shrink: 0; padding: 0 20px; font-family: 'Barlow Condensed', sans-serif; font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); border-right: 1px solid var(--line); }
+    .ticker-label::before { content: '●'; color: #3DFF7C; margin-right: 8px; animation: blink 1.4s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+    .ticker-track { display: flex; animation: tickerScroll 40s linear infinite; white-space: nowrap; }
+    .ticker-track span { font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--white-dim); padding: 0 40px; }
+    .ticker-track span b { color: var(--gold); font-weight: 500; }
+    @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ══════════════════════════════════════
+       MOBILE
+    ══════════════════════════════════════ */
+    @media(max-width:900px) {
+      nav { padding: 24px 28px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .page-hero { padding: 0 28px 80px; min-height: 100svh; }
+      .hero-meta { flex-direction: column; gap: 32px; }
+      .hero-divider { display: none; }
+      .hero-deco-word { display: none; }
+      .scroll-hint { display: none; }
+      .services-section { padding: 80px 28px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { border-right: none; border-bottom: 1px solid var(--line); }
+      .service-card:last-child { border-bottom: none; }
+      .criteria-section { padding: 80px 28px; }
+      .criteria-header { grid-template-columns: 1fr; gap: 32px; }
+      .criteria-grid { grid-template-columns: 1fr 1fr; }
+      .criteria-item:nth-child(2) { border-right: none; }
+      .criteria-item:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); }
+      .criteria-item:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
+      .stats-section { padding: 80px 28px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-block:nth-child(2) { border-right: none; }
+      .stat-block:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); }
+      .stat-block:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
+      .cta-section { padding: 80px 28px; }
+      .cta-inner { grid-template-columns: 1fr; gap: 40px; }
+      footer { padding: 40px 28px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="https://www.capstoneinvestgroup.co.uk/" class="nav-logo">Capstone <span>Invest</span> Group</a>
+  <ul class="nav-links">
+    <li><a href="https://www.capstoneinvestgroup.co.uk/">Home</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/investments">Properties</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/developments">Reserve a Unit</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/about" class="active">About Us</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/insights">Insights</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/contact">Contact</a></li>
+  </ul>
+  <a href="https://www.capstoneinvestgroup.co.uk/contact" class="nav-cta">Speak with an Advisor</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-menu-links">
+    <li><a href="https://www.capstoneinvestgroup.co.uk/">Home</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/investments">Properties</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/developments">Reserve a Unit</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/about">About Us</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/insights">Insights</a></li>
+    <li><a href="https://www.capstoneinvestgroup.co.uk/contact">Contact</a></li>
+  </ul>
+  <a href="https://www.capstoneinvestgroup.co.uk/contact" class="mobile-menu-cta">Speak with an Advisor</a>
+  <div class="mobile-menu-line">Capstone Invest Group &nbsp;·&nbsp; London &nbsp;·&nbsp; Singapore</div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Capstone Invest Group</div>
+    <h1 class="hero-title">About<br><em>Us</em></h1>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <div class="hero-stat-num">17</div>
+        <div class="hero-stat-label">Years of Expertise</div>
+      </div>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">Headquartered in London's Canary Wharf, with a presence in Singapore. A trusted partner at every stage of the asset lifecycle.</p>
+    </div>
+  </div>
+  <div class="hero-deco-word">About</div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ══ CORE SERVICES ══ -->
+<section class="services-section">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label reveal">What We Do &nbsp;·&nbsp; Core Services</div>
+      <h2 class="services-headline reveal reveal-delay-1">Three Specialist Disciplines.<br><em>One</em> Standard of Excellence.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-card-tag">01</div>
+        <div class="service-card-title">Off-Plan</div>
+        <p class="service-card-body">We provide access to a carefully curated portfolio of off-plan developments across the UK's most dynamic growth markets. By securing allocations directly with developers, we offer our clients preferential pricing, flexible payment structures, and the potential for significant capital appreciation prior to completion.<br><br>Our due diligence process is rigorous — every development is assessed for location fundamentals, developer track record, build quality, and yield projections before being presented to our investors.</p>
+        <a href="https://www.capstoneinvestgroup.co.uk/investments" class="service-card-link">View Properties</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-card-tag">02</div>
+        <div class="service-card-title">Off-Market</div>
+        <p class="service-card-body">Some of the most compelling investment opportunities never reach the open market. Through our established relationships with developers, landowners, and institutional vendors, Capstone Invest Group is able to source and present exclusive off-market properties to our investor base.<br><br>These opportunities often offer superior pricing and reduced competition, providing investors with a distinct advantage in the acquisition process.</p>
+        <a href="https://www.capstoneinvestgroup.co.uk/contact" class="service-card-link">Speak with an Advisor</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-card-tag">03</div>
+        <div class="service-card-title">Corporate Relocation</div>
+        <p class="service-card-body">We support businesses and their employees with professional property search and acquisition services for corporate relocations across the UK. Whether a company is expanding into a new region or relocating key personnel to London, our team provides an end-to-end service.<br><br>From initial property searches and viewings through to negotiation and completion, we ensure a smooth and efficient transition tailored to each client's requirements and timelines.</p>
+        <a href="https://www.capstoneinvestgroup.co.uk/contact" class="service-card-link">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SELECTION CRITERIA ══ -->
+<section class="criteria-section">
+  <div class="criteria-inner">
+    <div class="criteria-header">
+      <div>
+        <div class="section-label reveal">Our Selection Criteria</div>
+        <h2 class="criteria-headline reveal reveal-delay-1">Every Property Must Pass Our<br><em>Four-Point</em> Assessment.</h2>
+      </div>
+      <p class="criteria-sub reveal reveal-delay-2">Our mandate is to protect investor capital while maximising return potential. Each opportunity is stress-tested across four independent dimensions before it is ever presented to our network.</p>
+    </div>
+    <div class="criteria-grid">
+      <div class="criteria-item reveal">
+        <div class="criteria-num">01</div>
+        <div class="criteria-title">Market Analysis</div>
+        <p class="criteria-body">Supply/demand imbalances, demographic shifts, transport improvements.</p>
+      </div>
+      <div class="criteria-item reveal reveal-delay-1">
+        <div class="criteria-num">02</div>
+        <div class="criteria-title">Developer Review</div>
+        <p class="criteria-body">Auditing developer balance sheets, past completion records, and structural quality.</p>
+      </div>
+      <div class="criteria-item reveal reveal-delay-2">
+        <div class="criteria-num">03</div>
+        <div class="criteria-title">Stress Testing</div>
+        <p class="criteria-body">Yield modelling against severe rate shifts and extended void periods.</p>
+      </div>
+      <div class="criteria-item reveal reveal-delay-3">
+        <div class="criteria-num">04</div>
+        <div class="criteria-title">Exit Strategy</div>
+        <p class="criteria-body">Verifying secondary market liquidity for optimal exit opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRACK RECORD ══ -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stats-header">
+      <div class="stats-eyebrow reveal">Track Record</div>
+      <h2 class="stats-title reveal reveal-delay-1">Numbers That<br><em>Define</em> Us</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-block reveal">
+        <div class="stat-value">12.4%</div>
+        <div class="stat-label">Average ROI</div>
+        <p class="stat-desc">Aggregated yield and capital growth across historic properties.</p>
+      </div>
+      <div class="stat-block reveal reveal-delay-1">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Completion Rate</div>
+        <p class="stat-desc">Every recommended off-plan property successfully completed.</p>
+      </div>
+      <div class="stat-block reveal reveal-delay-2">
+        <div class="stat-value">£215m+</div>
+        <div class="stat-label">Transaction Volume</div>
+        <p class="stat-desc">Capital transacted across all UK property deals.</p>
+      </div>
+      <div class="stat-block reveal reveal-delay-3">
+        <div class="stat-value">2,847+</div>
+        <div class="stat-label">Investors</div>
+        <p class="stat-desc">Active investors placed across our property portfolio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="reveal">
+      <div class="cta-eyebrow">Begin Your Journey</div>
+      <h2 class="cta-title">Precision. Growth.<br><em>Returns.</em></h2>
+      <p class="cta-desc">Premium property investment opportunities across the UK. Our advisory team is available to discuss your requirements in complete confidence.</p>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <a href="https://www.capstoneinvestgroup.co.uk/investments" class="btn-primary">View Properties</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Capstone <span>Invest</span> Group</div>
+      <p class="footer-tagline">Precision. Growth. Returns.<br>Premium property investment opportunities across the UK.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-nav-list">
+        <li><a href="https://www.capstoneinvestgroup.co.uk/">Home</a></li>
+        <li><a href="https://www.capstoneinvestgroup.co.uk/investments">Properties</a></li>
+        <li><a href="https://www.capstoneinvestgroup.co.uk/developments">Reserve a Unit</a></li>
+        <li><a href="https://www.capstoneinvestgroup.co.uk/about">About Us</a></li>
+        <li><a href="https://www.capstoneinvestgroup.co.uk/insights">Insights</a></li>
+        <li><a href="https://www.capstoneinvestgroup.co.uk/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item">40 Bank St, Canary Wharf<br>London, E14 5NR</div>
+      <div class="footer-contact-item">1 Raffles Pl, #19-20 One Raffles Place Tower 2<br>Singapore 048616</div>
+      <div class="footer-contact-item"><a href="tel:+442080580990">+44 20 8058 0990</a></div>
+      <div class="footer-contact-item"><a href="mailto:contact@capstoneinvestgroup.co.uk">contact@capstoneinvestgroup.co.uk</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">Capstone Invest Group is an unregulated execution-only property investment platform. Property investment involves risk. Past performance is not indicative of future results. Capital at risk.</p>
+    <p class="footer-copy">&copy; 2026 Capstone Invest Group Ltd.</p>
+  </div>
+</footer>
+
+<!-- ── Ticker ── -->
+<div class="ticker">
+  <div class="ticker-label">Live</div>
+  <div class="ticker-track">
+    <span>Transaction Volume <b>£215M</b></span>
+    <span>Target Yield <b>6.8%</b></span>
+    <span>Active Properties <b>8</b></span>
+    <span>Investors <b>2,847+</b></span>
+    <span>Due Diligence Rejection Rate <b>78%</b></span>
+    <span>London <b>40 Bank St, Canary Wharf</b></span>
+    <span>Singapore <b>One Raffles Place Tower 2</b></span>
+    <span>17 Years <b>Industry Expertise</b></span>
+    <span>Contact <b>+44 20 8058 0990</b></span>
+    <span>Transaction Volume <b>£215M</b></span>
+    <span>Target Yield <b>6.8%</b></span>
+    <span>Active Properties <b>8</b></span>
+    <span>Investors <b>2,847+</b></span>
+    <span>Due Diligence Rejection Rate <b>78%</b></span>
+    <span>London <b>40 Bank St, Canary Wharf</b></span>
+    <span>Singapore <b>One Raffles Place Tower 2</b></span>
+    <span>17 Years <b>Industry Expertise</b></span>
+    <span>Contact <b>+44 20 8058 0990</b></span>
+  </div>
+</div>
+
+<script>
+// ── Custom cursor ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * .12; ry += (my - ry) * .12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a,button,.service-card,.criteria-item,.stat-block').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('expand'); ring.classList.add('expand'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('expand'); ring.classList.remove('expand'); });
+});
+
+// ── Burger menu ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.contains('open');
+  if (isOpen) {
+    mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = '';
+  } else {
+    mobileMenu.classList.add('open'); hamburger.classList.add('open'); document.body.style.overflow = 'hidden';
+  }
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = '';
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+    mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = '';
+  }
+});
+
+// ── Scroll reveal ──
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
