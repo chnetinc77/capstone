@@ -252,6 +252,17 @@
     .ticker-track span b { color:var(--gold); font-weight:500; }
     @keyframes tickerScroll { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
 
+    /* ── Hero phases ── */
+    .svc-phase { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:140px 52px; opacity:0; transform:translateY(40px); transition:opacity 0.6s ease,transform 0.6s ease; pointer-events:none; }
+    .svc-phase.active { opacity:1; transform:translateY(0); pointer-events:auto; }
+    .svc-phase.exit { opacity:0; transform:translateY(-30px); }
+    .svc-phase .page-eyebrow { margin-bottom:28px; }
+    .svc-phase .page-title { margin-bottom:28px; }
+    .phase-desc { max-width:620px; font-size:.9rem; line-height:1.9; color:var(--white-dim); font-weight:300; margin-bottom:0; }
+    .phase-pillars { display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:36px; max-width:560px; }
+    .phase-pillar-item { background:rgba(10,14,26,.6); padding:16px 22px; display:flex; align-items:center; gap:14px; font-family:'Barlow Condensed',sans-serif; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--white-dim); backdrop-filter:blur(8px); }
+    .phase-pillar-item::before { content:''; width:5px; height:5px; border:1px solid var(--gold); transform:rotate(45deg); flex-shrink:0; }
+
     /* ── Reveal ── */
     .reveal { opacity:0; transform:translateY(32px); transition:opacity .9s ease,transform .9s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
@@ -324,10 +335,32 @@
       <video id="svc-video" src="videos/services1.mp4" muted playsinline preload="auto"></video>
     </div>
     <div class="svc-video-overlay"></div>
-    <div class="svc-hero-content">
+
+    <!-- Phase 1: Title -->
+    <div class="svc-phase active" id="svc-phase1">
       <div class="page-eyebrow">Advisory Services</div>
       <h1 class="page-title">Global Real<br><em>Estate</em> Services</h1>
       <p class="page-subtitle-hero">Elite advisory for every milestone of your asset portfolio</p>
+    </div>
+
+    <!-- Phase 2: Description -->
+    <div class="svc-phase" id="svc-phase2">
+      <div class="page-eyebrow">Our Mandate</div>
+      <h2 class="page-title" style="font-size:clamp(2rem,4.5vw,4.2rem)">Your Premier<br><em>Trusted</em> Advisor</h2>
+      <p class="phase-desc">Wherever your strategic objectives or life milestones take you next, Capstone Invest Group stands as your premier trusted advisor. We recognise that acquiring, divesting, or leveraging prime real estate represents a pivotal financial decision. Our mandate is to seamlessly navigate you through the next chapter of your wealth and property journey.</p>
+    </div>
+
+    <!-- Phase 3: Expertise + pillars -->
+    <div class="svc-phase" id="svc-phase3">
+      <div class="page-eyebrow">Nearly Two Decades of Excellence</div>
+      <h2 class="page-title" style="font-size:clamp(2rem,4.5vw,4.2rem)">Definitive.<br><em>Data-Driven.</em><br>Delivered.</h2>
+      <p class="phase-desc">Leveraging nearly two decades of transaction excellence and specialised real estate mastery, we deliver definitive, deeply considered counsel and predictive market intelligence — guided by an elite team of industry authorities and anchored in comprehensive, data-driven research.</p>
+      <div class="phase-pillars">
+        <div class="phase-pillar-item">Elite Acquisition &amp; Asset Management</div>
+        <div class="phase-pillar-item">End-to-End Leasing Administration</div>
+        <div class="phase-pillar-item">Institutional Property Management</div>
+        <div class="phase-pillar-item">Bespoke Capital Financing</div>
+      </div>
     </div>
   </div>
 </div>
@@ -513,9 +546,26 @@
 </div>
 
 <script>
-// ── Services video scroll scrub ──
+// ── Services video scroll scrub + phases ──
 const svcWrapper = document.querySelector('.svc-hero-wrapper');
 const svcVideo   = document.getElementById('svc-video');
+const svcPhases  = [
+  document.getElementById('svc-phase1'),
+  document.getElementById('svc-phase2'),
+  document.getElementById('svc-phase3'),
+];
+const PHASE_AT = [0, 0.30, 0.65];
+let svcCurrentPhase = 0;
+
+function setSvcPhase(p) {
+  if (p === svcCurrentPhase) return;
+  svcPhases[svcCurrentPhase].classList.remove('active');
+  svcPhases[svcCurrentPhase].classList.add('exit');
+  const prev = svcCurrentPhase;
+  setTimeout(() => { svcPhases[prev].classList.remove('exit'); }, 600);
+  svcCurrentPhase = p;
+  svcPhases[p].classList.add('active');
+}
 
 function scrubSvcVideo() {
   if (!svcVideo.duration) return;
@@ -523,6 +573,10 @@ function scrubSvcVideo() {
   const scrollRange = svcWrapper.offsetHeight - window.innerHeight;
   const progress = Math.min(1, Math.max(0, -rect.top / scrollRange));
   svcVideo.currentTime = progress * svcVideo.duration;
+  let newPhase = 0;
+  if (progress >= PHASE_AT[2]) newPhase = 2;
+  else if (progress >= PHASE_AT[1]) newPhase = 1;
+  setSvcPhase(newPhase);
 }
 
 window.addEventListener('scroll', scrubSvcVideo, { passive: true });
