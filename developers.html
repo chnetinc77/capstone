@@ -18,13 +18,31 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{background:var(--navy);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+    body{background:var(--navy);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
 
-    /* Cursor */
-    .cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .3s,height .3s}
-    .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.6;transition:width .3s,height .3s,opacity .3s}
-    .cursor.expand{width:18px;height:18px}
-    .cursor-ring.expand{width:60px;height:60px;opacity:.3}
+    /* Cursor — disabled */
+
+    /* ── Video hero ── */
+    .hero-scroll-wrapper{position:relative;height:400vh}
+    .hero-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden}
+    .video-fallback{position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#0A0E1A 0%,#0F1A2E 50%,#0A0E1A 100%)}
+    .video-bg{position:absolute;inset:0;z-index:1}
+    .video-bg video{width:100%;height:100%;object-fit:cover;display:block}
+    .video-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(10,14,26,0.88) 0%,rgba(10,14,26,0.48) 60%,rgba(10,14,26,0.80) 100%)}
+    .phase{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:140px 52px;opacity:0;transform:translateY(40px);transition:opacity 0.6s ease,transform 0.6s ease;pointer-events:none}
+    .phase.active{opacity:1;transform:translateY(0);pointer-events:auto}
+    .phase.exit{opacity:0;transform:translateY(-30px)}
+    .phase-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;display:flex;align-items:center;gap:16px}
+    .phase-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);display:block}
+    .phase-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,6.5vw,6.5rem);line-height:.92;color:var(--white);margin-bottom:32px}
+    .phase-title em{font-style:italic;color:var(--gold)}
+    .phase-desc{max-width:580px;font-size:.9rem;line-height:1.9;color:var(--white-dim);font-weight:300}
+    .scroll-progress{position:absolute;right:32px;top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .progress-track{width:1px;height:120px;background:rgba(201,168,76,0.2);position:relative}
+    .progress-fill{position:absolute;top:0;left:0;width:100%;background:var(--gold);transition:height 0.1s linear}
+    .progress-dots{display:flex;flex-direction:column;gap:6px}
+    .progress-dot{width:4px;height:4px;border-radius:50%;background:rgba(201,168,76,0.3);transition:background 0.3s}
+    .progress-dot.active{background:var(--gold)}
 
     /* Nav */
     nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:28px 52px}
@@ -194,9 +212,6 @@
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <nav>
   <a href="index.html" class="nav-logo">Capstone <span>Invest</span> Group</a>
   <ul class="nav-links">
@@ -224,14 +239,42 @@
   <a href="contact.html" class="mobile-menu-cta">Speak with an Advisor</a>
 </div>
 
-<!-- Page Hero -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <div class="page-eyebrow">Development Partnerships</div>
-    <h1 class="page-title">Property Developers<br>&amp; Development<br><em>Consultancy</em></h1>
-    <p class="page-subtitle">Institutional-grade capital, marketing, and advisory partnerships for tier-one developers</p>
+<!-- ── Video Hero ── -->
+<div class="hero-scroll-wrapper" id="heroWrapper">
+  <div class="hero-sticky">
+    <div class="video-fallback"></div>
+    <div class="video-bg">
+      <video id="dev-video" src="videos/developers.mp4" muted playsinline preload="auto"></video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <div class="phase active" id="phase1">
+      <div class="phase-eyebrow">Development Partnerships</div>
+      <h1 class="phase-title">Property Developers<br>&amp; Development<br><em>Consultancy</em></h1>
+    </div>
+
+    <div class="phase" id="phase2">
+      <div class="phase-eyebrow">Aligning Capital with Exceptional Development</div>
+      <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Forging<br><em>Joint Ventures</em><br>with Tier-One Developers</h2>
+      <p class="phase-desc">Capstone Invest Group consistently strives to originate and deliver the most resilient, high-yielding real estate investment opportunities across the United Kingdom and premier global markets.</p>
+    </div>
+
+    <div class="phase" id="phase3">
+      <div class="phase-eyebrow">Institutional-Grade Capital &amp; Advisory</div>
+      <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">End-to-End.<br><em>Data-Driven.</em><br>Delivered.</h2>
+      <p class="phase-desc">We provide end-to-end consultancy services — ranging from pre-planning site evaluation and capital structuring to the global sales, marketing, and long-term asset management of entire developments.</p>
+    </div>
+
+    <div class="scroll-progress">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-dots">
+        <div class="progress-dot active" id="dot0"></div>
+        <div class="progress-dot" id="dot1"></div>
+        <div class="progress-dot" id="dot2"></div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- Partner intro -->
 <section class="partner-band">
@@ -462,17 +505,40 @@
 </div>
 
 <script>
-// Cursor
-const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function a(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
-document.querySelectorAll('a,button,.core-card,.service-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cursor.classList.add('expand');ring.classList.add('expand')});
-  el.addEventListener('mouseleave',()=>{cursor.classList.remove('expand');ring.classList.remove('expand')});
-});
+// ── Video scroll scrub + phases ──
+const wrapper=document.getElementById('heroWrapper');
+const video=document.getElementById('dev-video');
+const phases=[document.getElementById('phase1'),document.getElementById('phase2'),document.getElementById('phase3')];
+const progressFill=document.getElementById('progressFill');
+const dots=[document.getElementById('dot0'),document.getElementById('dot1'),document.getElementById('dot2')];
+const THRESHOLDS=[0,0.30,0.65];
+let currentPhase=0;
+function setPhase(p){
+  if(p===currentPhase)return;
+  phases[currentPhase].classList.remove('active');
+  phases[currentPhase].classList.add('exit');
+  const prev=currentPhase;
+  setTimeout(()=>{phases[prev].classList.remove('exit')},600);
+  currentPhase=p;
+  phases[p].classList.add('active');
+  dots.forEach((d,i)=>d.classList.toggle('active',i===p));
+}
+function onScroll(){
+  const rect=wrapper.getBoundingClientRect();
+  const range=wrapper.offsetHeight-window.innerHeight;
+  const progress=Math.min(1,Math.max(0,-rect.top/range));
+  if(video.duration)video.currentTime=progress*video.duration;
+  progressFill.style.height=(progress*100)+'%';
+  let p=0;
+  if(progress>=THRESHOLDS[2])p=2;
+  else if(progress>=THRESHOLDS[1])p=1;
+  setPhase(p);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+video.addEventListener('loadedmetadata',onScroll);
+video.play().catch(()=>{});
 
-// Hamburger
+// ── Hamburger ──
 const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
 hamburger.addEventListener('click',()=>{
   hamburger.classList.toggle('open');
