@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="description" content="Careers — Capstone Invest Group. Join our team. We're recruiting." />
+  <meta name="theme-color" content="#0A0E1A" />
+  <title>Careers — Capstone Invest Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@200;300;400;500;600&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:#0A0E1A; --navy-mid:#0F1629; --navy-dark:#070A12;
+      --gold:#C9A84C; --gold-light:#E2C47A;
+      --white:#F5F3EE; --white-dim:rgba(245,243,238,0.55);
+      --white-faint:rgba(245,243,238,0.12); --line:rgba(201,168,76,0.25);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--navy);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
+
+    /* Nav */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:28px 52px}
+    nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.97) 0%,transparent 100%);pointer-events:none}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.05rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:1}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:32px;list-style:none;position:relative;z-index:1}
+    .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;transition:color .3s}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-cta{position:relative;z-index:1;font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:10px 22px;text-decoration:none;transition:background .3s,color .3s}
+    .nav-cta:hover{background:var(--gold);color:var(--navy)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;position:relative;z-index:201}
+    .hamburger span{width:26px;height:1px;background:var(--white);display:block;transition:transform .3s,opacity .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(7,10,18,0.98);z-index:200;flex-direction:column;justify-content:center;align-items:center;gap:36px;backdrop-filter:blur(12px)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.08em;color:var(--white);text-decoration:none;transition:color .3s}
+    .mobile-menu a:hover,.mobile-menu a.active{color:var(--gold)}
+    .mobile-menu-cta{font-family:'Barlow Condensed',sans-serif !important;font-size:.9rem !important;letter-spacing:.25em !important;text-transform:uppercase;border:1px solid var(--line) !important;padding:14px 32px;margin-top:12px}
+
+    /* Page hero */
+    .page-hero{position:relative;padding:180px 52px 100px;overflow:hidden;border-bottom:1px solid var(--line)}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(201,168,76,0.05) 0%,transparent 65%);pointer-events:none}
+    .page-hero-inner{max-width:1400px;margin:0 auto;position:relative;z-index:1}
+    .page-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:16px}
+    .page-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);display:block}
+    .page-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.2rem,7vw,7rem);line-height:.92;color:var(--white);margin-bottom:36px}
+    .page-title em{font-style:italic;color:var(--gold)}
+    .page-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding-top:48px;border-top:1px solid var(--line)}
+    .page-intro-heading{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);margin-bottom:24px;line-height:1.1}
+    .page-intro-heading em{font-style:italic;color:var(--gold)}
+    .page-intro-text{font-size:.88rem;line-height:2;color:var(--white-dim)}
+    .page-intro-right{display:flex;flex-direction:column;justify-content:center}
+    .intro-pills{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+    .intro-pill{background:rgba(10,14,26,.6);padding:18px 24px;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white-dim);display:flex;align-items:center;gap:14px}
+    .intro-pill::before{content:'';width:5px;height:5px;border:1px solid var(--gold);transform:rotate(45deg);flex-shrink:0}
+
+    /* Opportunities section */
+    .opps-section{padding:0 52px 120px}
+    .opps-inner{max-width:1400px;margin:0 auto}
+    .opps-header{padding:60px 0 48px;border-bottom:1px solid var(--line);margin-bottom:0;display:flex;align-items:center;justify-content:space-between}
+    .opps-label{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px}
+    .opps-label::before{content:'';width:28px;height:1px;background:var(--gold)}
+    .opps-count{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--white-dim);letter-spacing:.1em}
+
+    /* Job card */
+    .job-card{border-bottom:1px solid var(--line);overflow:hidden}
+    .job-card:first-of-type{border-top:1px solid var(--line)}
+    .job-header{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;padding:48px 0;cursor:pointer;transition:background .3s}
+    .job-header:hover .job-title{color:var(--gold-light)}
+    .job-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);margin-bottom:12px;line-height:1.1;transition:color .4s}
+    .job-meta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+    .job-location{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white-dim);display:flex;align-items:center;gap:8px}
+    .job-location::before{content:'';width:5px;height:5px;border:1px solid var(--gold);transform:rotate(45deg)}
+    .job-ref{font-family:'Barlow Condensed',sans-serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,243,238,.3)}
+    .job-actions{display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex-shrink:0}
+    .job-toggle{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white-dim);display:flex;align-items:center;gap:8px;transition:color .3s}
+    .job-toggle::after{content:'↓';font-size:.9rem;transition:transform .3s}
+    .job-card.open .job-toggle::after{transform:rotate(180deg)}
+    .job-card.open .job-toggle{color:var(--gold)}
+
+    /* Job perks strip */
+    .job-perks{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:0}
+    .job-perk{background:rgba(10,14,26,.6);padding:14px 20px;font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white-dim);flex:1;display:flex;align-items:center;gap:10px}
+    .job-perk::before{content:'✦';color:var(--gold);font-size:.5rem}
+
+    /* Job body (expandable) */
+    .job-body{max-height:0;overflow:hidden;transition:max-height 0.6s ease}
+    .job-card.open .job-body{max-height:2000px}
+    .job-body-inner{padding:48px 0 52px;display:grid;grid-template-columns:1fr 1fr;gap:60px}
+    .job-section{margin-bottom:32px}
+    .job-section-title{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .job-section-title::before{content:'';width:18px;height:1px;background:var(--gold)}
+    .job-section-text{font-size:.85rem;line-height:2;color:var(--white-dim)}
+    .job-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .job-list li{font-size:.84rem;line-height:1.7;color:var(--white-dim);padding-left:18px;position:relative}
+    .job-list li::before{content:'›';position:absolute;left:0;color:var(--gold)}
+    .job-apply{margin-top:16px;padding-top:32px;border-top:1px solid var(--line);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .job-email{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white-dim)}
+    .job-email a{color:var(--gold);text-decoration:none}
+    .job-email a:hover{text-decoration:underline}
+
+    /* Buttons */
+    .btn-primary{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:14px 32px;text-decoration:none;transition:background .3s,transform .2s;display:inline-block;white-space:nowrap;border:none;cursor:pointer}
+    .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+    .btn-ghost{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:color .3s}
+    .btn-ghost::after{content:'→';font-size:1rem;transition:transform .3s}
+    .btn-ghost:hover{color:var(--gold)}
+    .btn-ghost:hover::after{transform:translateX(4px)}
+
+    /* CTA band */
+    .cta-band{background:var(--navy-dark);border-top:1px solid var(--line);padding:100px 52px}
+    .cta-band-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}
+    .cta-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+    .cta-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+    .cta-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.8rem);line-height:1.05;color:var(--white)}
+    .cta-title em{font-style:italic;color:var(--gold)}
+    .cta-desc{font-size:.88rem;line-height:1.9;color:var(--white-dim);margin-top:16px;max-width:520px}
+    .cta-actions{display:flex;flex-direction:column;gap:16px;align-items:flex-end;flex-shrink:0}
+
+    /* Footer */
+    footer{background:rgba(5,7,13,.98);border-top:1px solid var(--line);padding:40px 52px;margin-bottom:36px}
+    .footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--white-faint)}
+    .footer-brand{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white);margin-bottom:12px}
+    .footer-brand span{color:var(--gold)}
+    .footer-tagline{font-size:.78rem;color:var(--white-dim);line-height:1.7}
+    .footer-col-title{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .footer-nav-list{list-style:none}
+    .footer-nav-list li{margin-bottom:10px}
+    .footer-nav-list a{font-size:.8rem;color:var(--white-dim);text-decoration:none;transition:color .3s}
+    .footer-nav-list a:hover{color:var(--gold)}
+    .footer-contact-item{font-size:.8rem;color:var(--white-dim);line-height:1.7;margin-bottom:14px}
+    .footer-contact-item a{color:var(--white-dim);text-decoration:none;transition:color .3s}
+    .footer-contact-item a:hover{color:var(--gold)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center}
+    .footer-legal{font-size:.68rem;color:rgba(245,243,238,.3);line-height:1.7;max-width:520px}
+    .footer-copy{font-size:.68rem;color:rgba(245,243,238,.3)}
+
+    /* Ticker */
+    .ticker{position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(10,14,26,0.92);border-top:1px solid var(--line);height:36px;display:flex;align-items:center;overflow:hidden}
+    .ticker-label{flex-shrink:0;padding:0 20px;font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);border-right:1px solid var(--line)}
+    .ticker-label::before{content:'●';color:#3DFF7C;margin-right:8px;animation:blink 1.4s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    .ticker-track{display:flex;animation:tickerScroll 40s linear infinite;white-space:nowrap}
+    .ticker-track span{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white-dim);padding:0 40px}
+    .ticker-track span b{color:var(--gold);font-weight:500}
+    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.15s}
+    .reveal-delay-2{transition-delay:.3s}
+
+    /* Mobile */
+    @media(max-width:900px){
+      nav{padding:24px 28px}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      .page-hero{padding:140px 28px 80px}
+      .page-intro-grid{grid-template-columns:1fr;gap:40px}
+      .opps-section{padding:0 28px 80px}
+      .job-header{grid-template-columns:1fr;gap:20px}
+      .job-actions{align-items:flex-start}
+      .job-perks{flex-wrap:wrap}
+      .job-perk{flex:none;width:calc(50% - 1px)}
+      .job-body-inner{grid-template-columns:1fr;gap:0}
+      .cta-band{padding:72px 28px}
+      .cta-band-inner{grid-template-columns:1fr;gap:40px}
+      .cta-actions{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
+      footer{padding:40px 28px}
+      .footer-top{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+    }
+    @media(max-width:520px){
+      .job-perk{width:100%}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Capstone <span>Invest</span> Group</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="investments.html">Properties</a></li>
+    <li><a href="developers.html">Developers</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="careers.html" class="active">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Speak with an Advisor</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="investments.html">Properties</a>
+  <a href="developers.html">Developers</a>
+  <a href="insights.html">Insights</a>
+  <a href="about.html">About Us</a>
+  <a href="careers.html" class="active">Careers</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="contact.html" class="mobile-menu-cta">Speak with an Advisor</a>
+</div>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Join Our Team</div>
+    <h1 class="page-title"><em>Careers</em></h1>
+    <div class="page-intro-grid">
+      <div>
+        <h2 class="page-intro-heading">Want to Work<br><em>With Us?</em></h2>
+        <p class="page-intro-text">Capstone Invest Group is a leading property investment company specialising in buy-to-let investments. We are proud to offer luxury investment opportunities in only the most sought-after locations across the United Kingdom and beyond.<br><br>We are unlike any other property investment firm. Our unique training programmes allow you to learn first-hand from an award-winning team, and the rewards and opportunity on offer ensure that we set ourselves apart from the rest.<br><br>Join the team — we're recruiting.</p>
+      </div>
+      <div class="page-intro-right">
+        <div class="intro-pills">
+          <div class="intro-pill">Uncapped Earning Potential</div>
+          <div class="intro-pill">Full Intensive Training Programme</div>
+          <div class="intro-pill">Exceptional Career Progression</div>
+          <div class="intro-pill">International Travel Opportunities</div>
+          <div class="intro-pill">Dynamic & Thriving Environment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Opportunities -->
+<section class="opps-section">
+  <div class="opps-inner">
+    <div class="opps-header reveal">
+      <div class="opps-label">Current Opportunities</div>
+      <div class="opps-count">02 Open Roles</div>
+    </div>
+
+    <!-- Job 1: Account Manager -->
+    <div class="job-card reveal" id="job1">
+      <div class="job-header" onclick="toggleJob('job1')">
+        <div>
+          <div class="job-title">Account Managers</div>
+          <div class="job-meta">
+            <div class="job-location">London, UK</div>
+            <div class="job-ref">Ref: SP-INV-20</div>
+          </div>
+        </div>
+        <div class="job-actions">
+          <a href="mailto:HR@capstoneinvestgroup.co.uk?subject=Application: Account Manager SP-INV-20" class="btn-primary">Apply Now</a>
+          <div class="job-toggle">View Role</div>
+        </div>
+      </div>
+      <div class="job-perks">
+        <div class="job-perk">Competitive Basic + Commission</div>
+        <div class="job-perk">Full Intensive Training</div>
+        <div class="job-perk">Travel &amp; Benefits</div>
+        <div class="job-perk">Exceptional Career Progression</div>
+      </div>
+      <div class="job-body">
+        <div class="job-body-inner">
+          <div>
+            <div class="job-section">
+              <div class="job-section-title">The Role</div>
+              <p class="job-section-text">A fantastic opportunity has arisen for highly motivated individuals with a proven sales track record to join our dynamic team. Our ethos is all about being up for the challenge. If you have the drive to pursue a career — not just another sales role — we look forward to meeting you. The ideal candidate will be switched on, ambitious, and motivated by uncapped earning potential, with a great deal of integrity, energy, and drive, as well as the desire to exceed targets. As the face of the company, you should have the ability to build genuine rapport and truly understand our clients' aspirations.</p>
+            </div>
+            <div class="job-section">
+              <div class="job-section-title">Benefits</div>
+              <ul class="job-list">
+                <li>Competitive basic plus uncapped earnings</li>
+                <li>Full and intensive training programme</li>
+                <li>Exceptional rapid career progression</li>
+                <li>Numerous opportunities for overseas travel throughout the year</li>
+                <li>Potential to manage and motivate a sales team</li>
+                <li>The opportunity to work in a dynamic, sociable and thriving market</li>
+                <li>The opportunity to build your own investment portfolio</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="job-section">
+              <div class="job-section-title">About the Person</div>
+              <ul class="job-list">
+                <li>Solid experience working in a sales role with a demonstrable track record of closing deals</li>
+                <li>Energy, enthusiasm and a consistently positive attitude</li>
+                <li>Goal-orientated, target driven, self-motivated, organised and sociable</li>
+                <li>Thrives on taking responsibility and ownership</li>
+                <li>Full commitment and flexibility to occasionally work overseas</li>
+                <li>Ability to work effectively under pressure and deliver results</li>
+                <li>Prepared to invest the effort required to achieve exceptional success</li>
+              </ul>
+            </div>
+            <div class="job-section">
+              <div class="job-section-title">Responsibilities</div>
+              <ul class="job-list">
+                <li>Advising clients on premium property investment opportunities</li>
+                <li>Guiding clients throughout the full sales process</li>
+                <li>Closing property investment transactions</li>
+                <li>Managing client investment portfolios</li>
+                <li>Following up all sales enquiries in a timely and professional manner</li>
+                <li>Building rapport and maintaining long-term client relationships</li>
+                <li>Researching and reporting on new property opportunities</li>
+                <li>Potential to manage and motivate a sales team</li>
+              </ul>
+            </div>
+            <div class="job-apply">
+              <a href="mailto:HR@capstoneinvestgroup.co.uk?subject=Application: Account Manager SP-INV-20" class="btn-primary">Apply Now</a>
+              <div class="job-email">or email <a href="mailto:HR@capstoneinvestgroup.co.uk">HR@capstoneinvestgroup.co.uk</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Job 2: Sales Progressor -->
+    <div class="job-card reveal reveal-delay-1" id="job2">
+      <div class="job-header" onclick="toggleJob('job2')">
+        <div>
+          <div class="job-title">Sales Progressor &amp; Property Administrator</div>
+          <div class="job-meta">
+            <div class="job-location">London, UK</div>
+            <div class="job-ref">Ref: AD-INV-20</div>
+          </div>
+        </div>
+        <div class="job-actions">
+          <a href="mailto:HR@capstoneinvestgroup.co.uk?subject=Application: Sales Progressor AD-INV-20" class="btn-primary">Apply Now</a>
+          <div class="job-toggle">View Role</div>
+        </div>
+      </div>
+      <div class="job-perks">
+        <div class="job-perk">Competitive Basic + Commission</div>
+        <div class="job-perk">Full Intensive Training</div>
+        <div class="job-perk">Exceptional Career Progression</div>
+      </div>
+      <div class="job-body">
+        <div class="job-body-inner">
+          <div>
+            <div class="job-section">
+              <div class="job-section-title">Overview</div>
+              <ul class="job-list">
+                <li>Your primary responsibility will be to coordinate the exchange and completion of a number of properties within required timeframes, demanding exceptional organisational skills and the ability to prioritise under pressure.</li>
+                <li>You will liaise with buyers, vendors, solicitors and mortgage brokers — strong customer service and communication skills, both verbal and written, are therefore essential.</li>
+                <li>Strong physical and electronic administration skills are required for this varied and interesting role.</li>
+                <li>The ability to write creative advertisements, newsletters, blogs, and brochure copy will be a distinct advantage.</li>
+                <li>Excellent IT proficiency including Microsoft Word and Excel is essential.</li>
+                <li>Good customer relations skills and the ability to work collaboratively as part of a team are key requirements.</li>
+                <li>Experience in — or a willingness to learn — the company CRM system to its fullest capability.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="job-section">
+              <div class="job-section-title">Key Selection Criteria</div>
+              <ul class="job-list">
+                <li>Ability to quickly build rapport and strong relationships with clients, the team and developers</li>
+                <li>Creative problem-solving skills and the ability to think laterally</li>
+                <li>Excellent IT skills including advanced Word, Excel, PowerPoint, Outlook and Adobe Acrobat</li>
+                <li>Professional yet personable manner</li>
+                <li>An excellent command of English with the ability to draft correspondence and contracts</li>
+                <li>Strong attention to detail with the ability to proofread accurately</li>
+                <li>Fast and accurate typing speed</li>
+                <li>Ability to work both independently and as part of a supervised team</li>
+                <li>Going the extra mile to deliver exceptional service in a timely manner</li>
+                <li>Candidate must align with our core ethos: 100% investor satisfaction, under-promising and over-delivering</li>
+              </ul>
+            </div>
+            <div class="job-section">
+              <div class="job-section-title">Main Duties</div>
+              <ul class="job-list">
+                <li>Operating and maintaining the client database</li>
+                <li>Creation and ongoing management of the Sales Management Spreadsheet</li>
+                <li>Creation and ongoing management of the Sales Progression Spreadsheet</li>
+                <li>Own diary management and scheduling</li>
+              </ul>
+            </div>
+            <div class="job-apply">
+              <a href="mailto:HR@capstoneinvestgroup.co.uk?subject=Application: Sales Progressor AD-INV-20" class="btn-primary">Apply Now</a>
+              <div class="job-email">or email <a href="mailto:HR@capstoneinvestgroup.co.uk">HR@capstoneinvestgroup.co.uk</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <div class="cta-band-inner reveal">
+    <div>
+      <div class="cta-eyebrow">Don't See Your Role?</div>
+      <h2 class="cta-title">Send Us Your<br><em>CV Anyway</em></h2>
+      <p class="cta-desc">We are always on the lookout for exceptional talent. If you believe you have what it takes to thrive at Capstone Invest Group, reach out directly.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="mailto:HR@capstoneinvestgroup.co.uk" class="btn-primary">Email HR Team</a>
+      <a href="contact.html" class="btn-ghost">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Capstone <span>Invest</span> Group</div>
+      <p class="footer-tagline">Precision. Growth. Returns.<br>Premium property investment opportunities across the UK.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="investments.html">Properties</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item">40 Bank St, Canary Wharf<br>London, E14 5NR</div>
+      <div class="footer-contact-item">1 Raffles Pl, #19-20 One Raffles Place Tower 2<br>Singapore 048616</div>
+      <div class="footer-contact-item"><a href="tel:+442080580990">+44 20 8058 0990</a></div>
+      <div class="footer-contact-item"><a href="mailto:contact@capstoneinvestgroup.co.uk">contact@capstoneinvestgroup.co.uk</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">Capstone Invest Group is an unregulated execution-only property investment platform. Property investment involves risk. Past performance is not indicative of future results. Capital at risk.</p>
+    <p class="footer-copy">&copy; 2026 Capstone Invest Group Ltd.</p>
+  </div>
+</footer>
+
+<div class="ticker">
+  <div class="ticker-label">Live</div>
+  <div class="ticker-track">
+    <span>Transaction Volume <b>£215M</b></span>
+    <span>Target Yield <b>6.8%</b></span>
+    <span>Active Properties <b>8</b></span>
+    <span>Investors <b>2,847+</b></span>
+    <span>Due Diligence Rejection Rate <b>78%</b></span>
+    <span>London <b>40 Bank St, Canary Wharf</b></span>
+    <span>Singapore <b>One Raffles Place Tower 2</b></span>
+    <span>17 Years <b>Industry Expertise</b></span>
+    <span>Contact <b>+44 20 8058 0990</b></span>
+    <span>Transaction Volume <b>£215M</b></span>
+    <span>Target Yield <b>6.8%</b></span>
+    <span>Active Properties <b>8</b></span>
+    <span>Investors <b>2,847+</b></span>
+    <span>Due Diligence Rejection Rate <b>78%</b></span>
+    <span>London <b>40 Bank St, Canary Wharf</b></span>
+    <span>Singapore <b>One Raffles Place Tower 2</b></span>
+    <span>17 Years <b>Industry Expertise</b></span>
+    <span>Contact <b>+44 20 8058 0990</b></span>
+  </div>
+</div>
+
+<script>
+// Hamburger
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';
+}));
+
+// Job accordion
+function toggleJob(id){
+  const card=document.getElementById(id);
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.job-card').forEach(c=>c.classList.remove('open'));
+  if(!isOpen)card.classList.add('open');
+}
+
+// Reveal
+const revealEls=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+},{threshold:0.1});
+revealEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
