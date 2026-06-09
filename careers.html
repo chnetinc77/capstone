@@ -41,6 +41,28 @@
     .mobile-menu a:hover,.mobile-menu a.active{color:var(--gold)}
     .mobile-menu-cta{font-family:'Barlow Condensed',sans-serif !important;font-size:.9rem !important;letter-spacing:.25em !important;text-transform:uppercase;border:1px solid var(--line) !important;padding:14px 32px;margin-top:12px}
 
+    /* ── Video hero ── */
+    .hero-scroll-wrapper{position:relative;height:400vh}
+    .hero-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden}
+    .video-fallback{position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#0A0E1A 0%,#0F1A2E 50%,#0A0E1A 100%)}
+    .video-bg{position:absolute;inset:0;z-index:1}
+    .video-bg video{width:100%;height:100%;object-fit:cover;display:block}
+    .video-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(10,14,26,0.88) 0%,rgba(10,14,26,0.48) 60%,rgba(10,14,26,0.82) 100%)}
+    .phase{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:140px 52px;opacity:0;transform:translateY(40px);transition:opacity 0.6s ease,transform 0.6s ease;pointer-events:none}
+    .phase.active{opacity:1;transform:translateY(0);pointer-events:auto}
+    .phase.exit{opacity:0;transform:translateY(-30px)}
+    .phase-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;display:flex;align-items:center;gap:16px}
+    .phase-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);display:block}
+    .phase-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.2rem,7vw,7rem);line-height:.92;color:var(--white);margin-bottom:32px}
+    .phase-title em{font-style:italic;color:var(--gold)}
+    .phase-desc{max-width:560px;font-size:.9rem;line-height:1.9;color:var(--white-dim);font-weight:300}
+    .scroll-progress{position:absolute;right:32px;top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .progress-track{width:1px;height:80px;background:rgba(201,168,76,0.2);position:relative}
+    .progress-fill{position:absolute;top:0;left:0;width:100%;background:var(--gold);transition:height 0.1s linear}
+    .progress-dots{display:flex;flex-direction:column;gap:6px}
+    .progress-dot{width:4px;height:4px;border-radius:50%;background:rgba(201,168,76,0.3);transition:background 0.3s}
+    .progress-dot.active{background:var(--gold)}
+
     /* Page hero */
     .page-hero{position:relative;padding:180px 52px 100px;overflow:hidden;border-bottom:1px solid var(--line)}
     .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(201,168,76,0.05) 0%,transparent 65%);pointer-events:none}
@@ -160,6 +182,8 @@
       nav{padding:24px 28px}
       .nav-links,.nav-cta{display:none}
       .hamburger{display:flex}
+      .phase{padding:120px 28px}
+      .scroll-progress{display:none}
       .page-hero{padding:140px 28px 80px}
       .page-intro-grid{grid-template-columns:1fr;gap:40px}
       .opps-section{padding:0 28px 80px}
@@ -210,28 +234,43 @@
   <a href="contact.html" class="mobile-menu-cta">Speak with an Advisor</a>
 </div>
 
-<!-- Page Hero -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <div class="page-eyebrow">Join Our Team</div>
-    <h1 class="page-title"><em>Careers</em></h1>
-    <div class="page-intro-grid">
-      <div>
-        <h2 class="page-intro-heading">Want to Work<br><em>With Us?</em></h2>
-        <p class="page-intro-text">Capstone Invest Group is a leading property investment company specialising in buy-to-let investments. We are proud to offer luxury investment opportunities in only the most sought-after locations across the United Kingdom and beyond.<br><br>We are unlike any other property investment firm. Our unique training programmes allow you to learn first-hand from an award-winning team, and the rewards and opportunity on offer ensure that we set ourselves apart from the rest.<br><br>Join the team — we're recruiting.</p>
-      </div>
-      <div class="page-intro-right">
-        <div class="intro-pills">
-          <div class="intro-pill">Uncapped Earning Potential</div>
-          <div class="intro-pill">Full Intensive Training Programme</div>
-          <div class="intro-pill">Exceptional Career Progression</div>
-          <div class="intro-pill">International Travel Opportunities</div>
-          <div class="intro-pill">Dynamic & Thriving Environment</div>
-        </div>
+<!-- ── Video Hero ── -->
+<div class="hero-scroll-wrapper" id="heroWrapper">
+  <div class="hero-sticky">
+    <div class="video-fallback"></div>
+    <div class="video-bg">
+      <video id="careers-video" src="videos/careers.mp4" muted playsinline preload="auto"></video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <div class="phase active" id="phase1">
+      <div class="phase-eyebrow">Join Our Team</div>
+      <h1 class="phase-title"><em>Careers</em></h1>
+      <p class="phase-desc">We are unlike any other property investment firm. Join the team — we're recruiting.</p>
+    </div>
+
+    <div class="phase" id="phase2">
+      <div class="phase-eyebrow">Want to Work With Us?</div>
+      <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Learn From<br>an <em>Award-Winning</em><br>Team</h2>
+      <p class="phase-desc">Our unique training programmes allow you to learn first-hand from an award-winning team, and the rewards and opportunity on offer ensure that we set ourselves apart from the rest.</p>
+    </div>
+
+    <div class="phase" id="phase3">
+      <div class="phase-eyebrow">Uncapped Potential</div>
+      <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Exceptional.<br><em>Rewarding.</em><br>Ambitious.</h2>
+      <p class="phase-desc">Competitive earnings, rapid career progression, international travel, and the opportunity to build your own investment portfolio — all within a dynamic, thriving environment.</p>
+    </div>
+
+    <div class="scroll-progress">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-dots">
+        <div class="progress-dot active" id="dot0"></div>
+        <div class="progress-dot" id="dot1"></div>
+        <div class="progress-dot" id="dot2"></div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Opportunities -->
 <section class="opps-section">
@@ -464,6 +503,39 @@
 </div>
 
 <script>
+// Video scroll scrub + phases
+const wrapper=document.getElementById('heroWrapper');
+const video=document.getElementById('careers-video');
+const phases=[document.getElementById('phase1'),document.getElementById('phase2'),document.getElementById('phase3')];
+const progressFill=document.getElementById('progressFill');
+const dots=[document.getElementById('dot0'),document.getElementById('dot1'),document.getElementById('dot2')];
+const THRESHOLDS=[0,0.30,0.65];
+let currentPhase=0;
+function setPhase(p){
+  if(p===currentPhase)return;
+  phases[currentPhase].classList.remove('active');
+  phases[currentPhase].classList.add('exit');
+  const prev=currentPhase;
+  setTimeout(()=>{phases[prev].classList.remove('exit')},600);
+  currentPhase=p;
+  phases[p].classList.add('active');
+  dots.forEach((d,i)=>d.classList.toggle('active',i===p));
+}
+function onScroll(){
+  const rect=wrapper.getBoundingClientRect();
+  const range=wrapper.offsetHeight-window.innerHeight;
+  const progress=Math.min(1,Math.max(0,-rect.top/range));
+  if(video.duration)video.currentTime=progress*video.duration;
+  progressFill.style.height=(progress*100)+'%';
+  let p=0;
+  if(progress>=THRESHOLDS[2])p=2;
+  else if(progress>=THRESHOLDS[1])p=1;
+  setPhase(p);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+video.addEventListener('loadedmetadata',onScroll);
+video.play().catch(()=>{});
+
 // Hamburger
 const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
 hamburger.addEventListener('click',()=>{
