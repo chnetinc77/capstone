@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1"/>
+  <title>Principal Tower | Luxury London Apartments — Capstone Invest Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@200;300;400;500;600&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--navy:#0A0E1A;--navy-mid:#0F1629;--navy-dark:#070A12;--gold:#C9A84C;--gold-light:#E2C47A;--white:#F5F3EE;--white-dim:rgba(245,243,238,0.55);--white-faint:rgba(245,243,238,0.12);--line:rgba(201,168,76,0.25)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--navy);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:28px 52px}
+    nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.97) 0%,transparent 100%);pointer-events:none}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.05rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:1}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:32px;list-style:none;position:relative;z-index:1}
+    .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;transition:color .3s}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-cta{position:relative;z-index:1;font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:10px 22px;text-decoration:none;transition:background .3s,color .3s}
+    .nav-cta:hover{background:var(--gold);color:var(--navy)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;position:relative;z-index:201}
+    .hamburger span{width:26px;height:1px;background:var(--white);display:block;transition:transform .3s,opacity .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(7,10,18,0.98);z-index:200;flex-direction:column;justify-content:center;align-items:center;gap:36px;backdrop-filter:blur(12px)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.2rem;letter-spacing:.08em;color:var(--white);text-decoration:none;transition:color .3s}
+    .mobile-menu a:hover{color:var(--gold)}
+    .mobile-menu-cta{font-family:'Barlow Condensed',sans-serif !important;font-size:.9rem !important;letter-spacing:.25em !important;text-transform:uppercase;border:1px solid var(--line) !important;padding:14px 32px;margin-top:12px}
+    .prop-hero{position:relative;height:70vh;overflow:hidden}
+    .prop-hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+    .prop-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,26,1) 0%,rgba(10,14,26,.3) 60%,transparent 100%)}
+    .prop-hero-content{position:absolute;bottom:0;left:0;right:0;padding:60px 52px;max-width:1400px;margin:0 auto}
+    .prop-back{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:28px;transition:color .3s}
+    .prop-back::before{content:'←'}
+    .prop-back:hover{color:var(--gold)}
+    .prop-cat-tag{font-family:'Barlow Condensed',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    .prop-cat-tag::before{content:'';width:20px;height:1px;background:var(--gold)}
+    .prop-location-tag{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white-dim);margin-bottom:16px}
+    .prop-hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,4.5rem);line-height:1.0;color:var(--white)}
+    .prop-hero-title em{font-style:italic;color:var(--gold)}
+    .prop-main{max-width:1400px;margin:0 auto;padding:0 52px 120px}
+    .prop-layout{display:grid;grid-template-columns:1fr 380px;gap:60px;padding-top:60px}
+    .prop-desc-section{margin-bottom:48px}
+    .prop-section-label{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+    .prop-section-label::before{content:'';width:20px;height:1px;background:var(--gold)}
+    .prop-text{font-size:.88rem;line-height:2;color:var(--white-dim)}
+    .prop-highlights{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px}
+    .prop-highlight{background:rgba(10,14,26,.6);padding:18px 22px;display:flex;align-items:center;gap:14px;font-size:.84rem;color:var(--white-dim)}
+    .prop-highlight::before{content:'';width:5px;height:5px;border:1px solid var(--gold);transform:rotate(45deg);flex-shrink:0}
+    .prop-sidebar{}
+    .prop-stats-card{background:var(--navy-mid);border:1px solid var(--line);margin-bottom:20px}
+    .prop-stats-title{font-family:'Barlow Condensed',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding:20px 24px;border-bottom:1px solid var(--line)}
+    .prop-stat-row{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--white-faint)}
+    .prop-stat-row:last-child{border-bottom:none}
+    .prop-stat-key{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white-dim)}
+    .prop-stat-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);font-weight:500}
+    .prop-cta-card{background:rgba(201,168,76,.06);border:1px solid var(--line);padding:32px 28px;text-align:center}
+    .prop-cta-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--white);margin-bottom:8px}
+    .prop-cta-sub{font-size:.78rem;color:var(--white-dim);margin-bottom:24px;line-height:1.7}
+    .btn-primary{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:16px 32px;text-decoration:none;transition:background .3s;display:inline-block;width:100%;text-align:center;border:none;cursor:pointer}
+    .btn-primary:hover{background:var(--gold-light)}
+    .btn-ghost-full{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;display:block;text-align:center;margin-top:14px;transition:color .3s}
+    .btn-ghost-full:hover{color:var(--gold)}
+    footer{background:rgba(5,7,13,.98);border-top:1px solid var(--line);padding:40px 52px;margin-bottom:36px}
+    .footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--white-faint)}
+    .footer-brand{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white);margin-bottom:12px}
+    .footer-brand span{color:var(--gold)}
+    .footer-tagline{font-size:.78rem;color:var(--white-dim);line-height:1.7}
+    .footer-col-title{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .footer-nav-list{list-style:none}
+    .footer-nav-list li{margin-bottom:10px}
+    .footer-nav-list a{font-size:.8rem;color:var(--white-dim);text-decoration:none;transition:color .3s}
+    .footer-nav-list a:hover{color:var(--gold)}
+    .footer-contact-item{font-size:.8rem;color:var(--white-dim);line-height:1.7;margin-bottom:14px}
+    .footer-contact-item a{color:var(--white-dim);text-decoration:none;transition:color .3s}
+    .footer-contact-item a:hover{color:var(--gold)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center}
+    .footer-legal{font-size:.68rem;color:rgba(245,243,238,.3);line-height:1.7;max-width:520px}
+    .footer-copy{font-size:.68rem;color:rgba(245,243,238,.3)}
+    .ticker{position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(10,14,26,0.92);border-top:1px solid var(--line);height:36px;display:flex;align-items:center;overflow:hidden}
+    .ticker-label{flex-shrink:0;padding:0 20px;font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);border-right:1px solid var(--line)}
+    .ticker-label::before{content:'●';color:#3DFF7C;margin-right:8px;animation:blink 1.4s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    .ticker-track{display:flex;animation:tickerScroll 40s linear infinite;white-space:nowrap}
+    .ticker-track span{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white-dim);padding:0 40px}
+    .ticker-track span b{color:var(--gold);font-weight:500}
+    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @media(max-width:900px){nav{padding:24px 28px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.prop-hero-content{padding:40px 28px}.prop-main{padding:0 28px 80px}.prop-layout{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:16px;text-align:center}footer{padding:40px 28px}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Capstone <span>Invest</span> Group</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="investments.html" class="active">Properties</a></li>
+    <li><a href="developers.html">Developers</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Speak with an Advisor</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="investments.html">Properties</a>
+  <a href="developers.html">Developers</a>
+  <a href="insights.html">Insights</a>
+  <a href="about.html">About Us</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="contact.html" class="mobile-menu-cta">Speak with an Advisor</a>
+</div>
+<section class="prop-hero">
+  <img class="prop-hero-img" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80" alt="Principal Tower | Luxury London Apartments"/>
+  <div class="prop-hero-overlay"></div>
+  <div class="prop-hero-content">
+    <a href="investments.html" class="prop-back">Back to Properties</a>
+    <div class="prop-cat-tag">Buy to Let</div>
+    <div class="prop-location-tag">Shoreditch, London</div>
+    <h1 class="prop-hero-title">Principal Tower | Luxury London Apartments</h1>
+  </div>
+</section>
+<div class="prop-main">
+  <div class="prop-layout">
+    <div>
+      <div class="prop-desc-section">
+        <div class="prop-section-label">Overview</div>
+        <p class="prop-text">Principal Tower at Principal Place is where the most influential financial district in the City meets the innovative tech hub of Silicon Roundabout. This landmark residential tower delivers some of London's most sought-after addresses, combining world-class design with unrivalled connectivity. Residents benefit from a full suite of five-star amenities including concierge services, a private gym, spa, and rooftop terrace overlooking the City skyline. Strong rental demand from City professionals and tech workers ensures consistently low void periods and premium rental yields.</p>
+      </div>
+      <div class="prop-desc-section">
+        <div class="prop-section-label">Key Highlights</div>
+        <div class="prop-highlights">
+          <div class="prop-highlight">Institutional-grade due diligence applied</div>
+          <div class="prop-highlight">Managed end-to-end by Capstone Invest Group</div>
+          <div class="prop-highlight">Off-market pricing secured for our investor network</div>
+          <div class="prop-highlight">Full legal and financial support provided</div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-sidebar">
+      <div class="prop-stats-card">
+        <div class="prop-stats-title">Investment Summary</div>
+        <div class="prop-stat-row"><div class="prop-stat-key">Minimum Entry</div><div class="prop-stat-val">£1,100,000</div></div>
+        <div class="prop-stat-row"><div class="prop-stat-key">Target Yield</div><div class="prop-stat-val">5.0%</div></div>
+        <div class="prop-stat-row"><div class="prop-stat-key">Category</div><div class="prop-stat-val" style="font-size:.9rem">Buy to Let</div></div>
+        <div class="prop-stat-row"><div class="prop-stat-key">Status</div><div class="prop-stat-val" style="font-size:.9rem">Operational</div></div>
+        <div class="prop-stat-row"><div class="prop-stat-key">Location</div><div class="prop-stat-val" style="font-size:.85rem">Shoreditch, London</div></div>
+      </div>
+      <div class="prop-cta-card">
+        <div class="prop-cta-title">Interested?</div>
+        <p class="prop-cta-sub">Speak with an advisor to discuss this opportunity in complete confidence.</p>
+        <a href="contact.html" class="btn-primary">Speak with an Advisor</a>
+        <a href="investments.html" class="btn-ghost-full">View All Properties</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-brand">Capstone <span>Invest</span> Group</div><p class="footer-tagline">Precision. Growth. Returns.<br>Premium property investment opportunities across the UK.</p></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-nav-list"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="investments.html">Properties</a></li><li><a href="developers.html">Developers</a></li><li><a href="insights.html">Insights</a></li><li><a href="about.html">About Us</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><div class="footer-contact-item">40 Bank St, Canary Wharf<br>London, E14 5NR</div><div class="footer-contact-item">1 Raffles Pl, #19-20<br>Singapore 048616</div><div class="footer-contact-item"><a href="tel:+442080580990">+44 20 8058 0990</a></div><div class="footer-contact-item"><a href="mailto:contact@capstoneinvestgroup.co.uk">contact@capstoneinvestgroup.co.uk</a></div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-legal">Capstone Invest Group is an unregulated execution-only property investment platform. Property investment involves risk. Past performance is not indicative of future results. Capital at risk.</p><p class="footer-copy">&copy; 2026 Capstone Invest Group Ltd.</p></div>
+</footer>
+<div class="ticker"><div class="ticker-label">Live</div><div class="ticker-track"><span>Transaction Volume <b>£215M</b></span><span>Target Yield <b>6.8%</b></span><span>Active Properties <b>8</b></span><span>Investors <b>2,847+</b></span><span>London <b>Canary Wharf</b></span><span>Singapore <b>One Raffles Place</b></span><span>Transaction Volume <b>£215M</b></span><span>Target Yield <b>6.8%</b></span><span>Active Properties <b>8</b></span><span>Investors <b>2,847+</b></span></div></div>
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';});
+m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{h.classList.remove('open');m.classList.remove('open');document.body.style.overflow=''}));
+</script>
+</body>
+</html>
