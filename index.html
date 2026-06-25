@@ -22,13 +22,8 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--navy); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+    body { background: var(--navy); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-    /* ── Cursor ── */
-    .cursor { position: fixed; top:0; left:0; width:10px; height:10px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:difference; transition:width .3s,height .3s; }
-    .cursor-ring { position:fixed; top:0; left:0; width:36px; height:36px; border:1px solid var(--gold); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:.6; transition:width .3s,height .3s,opacity .3s; }
-    .cursor.expand { width:18px; height:18px; }
-    .cursor-ring.expand { width:60px; height:60px; opacity:.3; }
 
     /* ── Nav ── */
     nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:28px 52px; }
@@ -177,9 +172,6 @@
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <nav>
   <a href="index.html" class="nav-logo">Capstone <span>Invest</span> Group</a>
   <ul class="nav-links">
@@ -213,7 +205,7 @@
   <div class="hero-sticky" id="heroSticky">
     <div class="video-fallback"></div>
     <div class="video-bg">
-      <video id="video-hero" src="videos/home1.mp4" muted playsinline preload="auto"></video>
+      <video id="video-hero" src="videos/hero.mp4" muted playsinline preload="auto"></video>
     </div>
     <div class="diag"></div>
 
@@ -353,16 +345,7 @@
 </div>
 
 <script>
-// ── Cursor ──
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
-(function a(){ cursor.style.left=mx+'px'; cursor.style.top=my+'px'; rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(a); })();
-document.querySelectorAll('a,button,.pillar').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.classList.add('expand'); ring.classList.add('expand'); });
-  el.addEventListener('mouseleave', () => { cursor.classList.remove('expand'); ring.classList.remove('expand'); });
-});
+// Cursor removed
 
 // ── Hamburger ──
 const hamburger  = document.getElementById('hamburger');
