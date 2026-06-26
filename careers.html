@@ -63,6 +63,17 @@
     .progress-dot{width:4px;height:4px;border-radius:50%;background:rgba(201,168,76,0.3);transition:background 0.3s}
     .progress-dot.active{background:var(--gold)}
 
+
+    /* Frosted glass text */
+    .glass-text {
+      display: inline-block;
+      background: rgba(7,10,18,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
     /* Page hero */
     .page-hero{position:relative;padding:180px 52px 100px;overflow:hidden;border-bottom:1px solid var(--line)}
     .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(201,168,76,0.05) 0%,transparent 65%);pointer-events:none}
@@ -213,7 +224,7 @@
     <li><a href="services.html">Services</a></li>
     <li><a href="investments.html">Properties</a></li>
     <li><a href="developers.html">Developers</a></li>
-    <li><a href="insights.html">Insights</a></li>
+    <!-- insights hidden -->
     <li><a href="about.html">About Us</a></li>
     <li><a href="careers.html" class="active">Careers</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -227,7 +238,7 @@
   <a href="services.html">Services</a>
   <a href="investments.html">Properties</a>
   <a href="developers.html">Developers</a>
-  <a href="insights.html">Insights</a>
+  <!-- insights hidden -->
   <a href="about.html">About Us</a>
   <a href="careers.html" class="active">Careers</a>
   <a href="contact.html">Contact Us</a>
@@ -244,21 +255,27 @@
     <div class="video-overlay"></div>
 
     <div class="phase active" id="phase1">
+      <div class="glass-text">
       <div class="phase-eyebrow">Join Our Team</div>
       <h1 class="phase-title"><em>Careers</em></h1>
       <p class="phase-desc">We are unlike any other property investment firm. Join the team — we're recruiting.</p>
+      </div>
     </div>
 
     <div class="phase" id="phase2">
+      <div class="glass-text">
       <div class="phase-eyebrow">Want to Work With Us?</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Learn From<br>an <em>Award-Winning</em><br>Team</h2>
       <p class="phase-desc">Our unique training programmes allow you to learn first-hand from an award-winning team, and the rewards and opportunity on offer ensure that we set ourselves apart from the rest.</p>
+      </div>
     </div>
 
     <div class="phase" id="phase3">
+      <div class="glass-text">
       <div class="phase-eyebrow">Uncapped Potential</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Exceptional.<br><em>Rewarding.</em><br>Ambitious.</h2>
       <p class="phase-desc">Competitive earnings, rapid career progression, international travel, and the opportunity to build your own investment portfolio — all within a dynamic, thriving environment.</p>
+      </div>
     </div>
 
     <div class="scroll-progress">
@@ -458,7 +475,7 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="investments.html">Properties</a></li>
         <li><a href="developers.html">Developers</a></li>
-        <li><a href="insights.html">Insights</a></li>
+        <!-- insights hidden -->
         <li><a href="about.html">About Us</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact Us</a></li>
