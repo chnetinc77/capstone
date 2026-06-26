@@ -178,6 +178,17 @@
     .ticker-track span b{color:var(--gold);font-weight:500}
     @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
+
+    /* Frosted glass text */
+    .glass-text {
+      display: inline-block;
+      background: rgba(7,10,18,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
     /* Reveal */
     .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
@@ -249,20 +260,26 @@
     <div class="video-overlay"></div>
 
     <div class="phase active" id="phase1">
+      <div class="glass-text">
       <div class="phase-eyebrow">Development Partnerships</div>
       <h1 class="phase-title">Property Developers<br>&amp; Development<br><em>Consultancy</em></h1>
+      </div>
     </div>
 
     <div class="phase" id="phase2">
+      <div class="glass-text">
       <div class="phase-eyebrow">Aligning Capital with Exceptional Development</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Forging<br><em>Joint Ventures</em><br>with Tier-One Developers</h2>
       <p class="phase-desc">Capstone Invest Group consistently strives to originate and deliver the most resilient, high-yielding real estate investment opportunities across the United Kingdom and premier global markets.</p>
+      </div>
     </div>
 
     <div class="phase" id="phase3">
+      <div class="glass-text">
       <div class="phase-eyebrow">Institutional-Grade Capital &amp; Advisory</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">End-to-End.<br><em>Data-Driven.</em><br>Delivered.</h2>
       <p class="phase-desc">We provide end-to-end consultancy services — ranging from pre-planning site evaluation and capital structuring to the global sales, marketing, and long-term asset management of entire developments.</p>
+      </div>
     </div>
 
     <div class="scroll-progress">
