@@ -140,6 +140,17 @@
     .ticker-track span b{color:var(--gold);font-weight:500}
     @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
+
+    /* Frosted glass text */
+    .glass-text {
+      display: inline-block;
+      background: rgba(7,10,18,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
     /* Reveal */
     .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
@@ -202,14 +213,18 @@
     </div>
     <div class="video-overlay"></div>
     <div class="phase active" id="phase1">
+      <div class="glass-text">
       <div class="phase-eyebrow">Investment Portfolio</div>
       <h1 class="phase-title"><em>Properties</em></h1>
       <p class="phase-desc">A curated selection of institutional-grade UK property investment opportunities — each rigorously vetted before reaching our network.</p>
+      </div>
     </div>
     <div class="phase" id="phase2">
+      <div class="glass-text">
       <div class="phase-eyebrow">Off-Plan · Buy to Let · Hotel Room · Bond</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Precision-Selected.<br><em>High-Yield.</em><br>UK Property.</h2>
       <p class="phase-desc">From landmark London luxury apartments to high-demand student accommodation — every opportunity is backed by deep market intelligence and institutional due diligence.</p>
+      </div>
     </div>
     <div class="scroll-progress">
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
