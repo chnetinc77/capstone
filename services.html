@@ -27,6 +27,16 @@
 
     /* ── Cursor ── */
 
+    /* ── Frosted glass text wrap ── */
+    .glass-text {
+      display: inline-block;
+      background: rgba(7,10,18,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
     /* ── Nav ── */
     nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:28px 52px; }
     nav::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(10,14,26,0.97) 0%,transparent 100%); pointer-events:none; }
@@ -356,26 +366,26 @@
     <div class="svc-video-overlay"></div>
 
     <!-- Phase 1: Title -->
-    <div class="svc-phase active" id="svc-phase1"><div class="phase-glass">
-      <div class="phase-glass">
+    <div class="svc-phase active" id="svc-phase1">
+      <div class="glass-text">
       <div class="page-eyebrow">Advisory Services</div>
       <h1 class="page-title">Global Real<br><em>Estate</em> Services</h1>
       <p class="page-subtitle-hero">Elite advisory for every milestone of your asset portfolio</p>
-          </div>
-    </div></div>
+      </div>
+    </div>
 
     <!-- Phase 2: Description -->
-    <div class="svc-phase" id="svc-phase2"><div class="phase-glass">
-      <div class="phase-glass">
+    <div class="svc-phase" id="svc-phase2">
+      <div class="glass-text">
       <div class="page-eyebrow">Our Mandate</div>
       <h2 class="page-title" style="font-size:clamp(2rem,4.5vw,4.2rem)">Your Premier<br><em>Trusted</em> Advisor</h2>
       <p class="phase-desc">Wherever your strategic objectives or life milestones take you next, Capstone Invest Group stands as your premier trusted advisor. We recognise that acquiring, divesting, or leveraging prime real estate represents a pivotal financial decision. Our mandate is to seamlessly navigate you through the next chapter of your wealth and property journey.</p>
-          </div>
-    </div></div>
+      </div>
+    </div>
 
     <!-- Phase 3: Expertise + pillars -->
-    <div class="svc-phase" id="svc-phase3"><div class="phase-glass">
-      <div class="phase-glass">
+    <div class="svc-phase" id="svc-phase3">
+      <div class="glass-text">
       <div class="page-eyebrow">Nearly Two Decades of Excellence</div>
       <h2 class="page-title" style="font-size:clamp(2rem,4.5vw,4.2rem)">Definitive.<br><em>Data-Driven.</em><br>Delivered.</h2>
       <p class="phase-desc">Leveraging nearly two decades of transaction excellence and specialised real estate mastery, we deliver definitive, deeply considered counsel and predictive market intelligence — guided by an elite team of industry authorities and anchored in comprehensive, data-driven research.</p>
@@ -385,9 +395,8 @@
         <div class="phase-pillar-item">Institutional Property Management</div>
         <div class="phase-pillar-item">Bespoke Capital Financing</div>
       </div>
+      </div>
     </div>
-  </div>
-</div>
 
 <!-- ── Section label ── -->
 
