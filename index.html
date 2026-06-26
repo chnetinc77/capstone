@@ -49,6 +49,17 @@
     .mobile-menu a.active { color:var(--gold); }
     .mobile-menu-cta { font-family:'Barlow Condensed',sans-serif !important; font-size:.9rem !important; letter-spacing:.25em !important; text-transform:uppercase; border:1px solid var(--line) !important; padding:14px 32px; margin-top:12px; }
 
+
+    /* Frosted glass text */
+    .glass-text {
+      display: inline-block;
+      background: rgba(7,10,18,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
     /* ── Scroll scrub hero ── */
     .hero-scroll-wrapper { position:relative; height:500vh; }
     .hero-sticky { position:sticky; top:0; height:100vh; width:100%; overflow:hidden; }
@@ -179,7 +190,7 @@
     <li><a href="services.html">Services</a></li>
     <li><a href="investments.html">Properties</a></li>
     <li><a href="developers.html">Developers</a></li>
-    <li><a href="insights.html">Insights</a></li>
+    <!-- insights hidden -->
     <li><a href="about.html">About Us</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -193,7 +204,7 @@
   <a href="services.html">Services</a>
   <a href="investments.html">Properties</a>
   <a href="developers.html">Developers</a>
-  <a href="insights.html">Insights</a>
+  <!-- insights hidden -->
   <a href="about.html">About Us</a>
   <a href="careers.html">Careers</a>
   <a href="contact.html">Contact Us</a>
@@ -210,24 +221,30 @@
     <div class="diag"></div>
 
     <div class="phase active" id="phase1">
+      <div class="glass-text">
       <div class="phase-eyebrow">Live — Direct Brokerage &amp; Institutional-Grade Property Investment</div>
       <h1 class="phase-title">Precision.<br><em>Growth.</em><br>Returns.</h1>
+      </div>
     </div>
 
     <div class="phase" id="phase2">
+      <div class="glass-text">
       <div class="phase-eyebrow">Institutional-Grade Property Opportunities</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">For the<br><em>Discerning</em><br>Investor</h2>
       <div class="phase-subhead" style="margin-top:8px">Institutional-Grade Property Opportunities for Private Investors</div>
       <p class="phase-desc">Capstone Invest Group stands as one of the UK's premier property investment firms. Backed by seventeen years of industry expertise, we have established a sophisticated global footprint with strategic corporate offices in London and Singapore.</p>
+      </div>
     </div>
 
     <div class="phase" id="phase3">
+      <div class="glass-text">
       <div class="phase-eyebrow">Begin Your Investment Journey</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Secured.<br><em>Verified.</em><br>Delivered.</h2>
       <p class="phase-desc">Rooted in rigorous due diligence, transparency, and absolute reliability, we have cultivated an elite network of international investors who trust us to identify institutional-grade asset acquisitions.</p>
       <div class="phase-actions">
         <a href="investments.html" class="btn-primary">View All Properties</a>
         <a href="about.html" class="btn-ghost">About Us</a>
+      </div>
       </div>
     </div>
 
@@ -300,7 +317,7 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="investments.html">Properties</a></li>
         <li><a href="developers.html">Developers</a></li>
-        <li><a href="insights.html">Insights</a></li>
+        <!-- insights hidden -->
         <li><a href="about.html">About Us</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact Us</a></li>
