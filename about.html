@@ -74,6 +74,17 @@
     .progress-dot{width:4px;height:4px;border-radius:50%;background:rgba(201,168,76,0.3);transition:background 0.3s}
     .progress-dot.active{background:var(--gold)}
 
+
+    /* Frosted glass text */
+    .glass-text {
+      display: inline-block;
+      background: rgba(7,10,18,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
     /* ── What we do ── */
     .what-section{padding:100px 52px 0;border-top:1px solid var(--line)}
     .what-inner{max-width:1400px;margin:0 auto}
@@ -210,7 +221,7 @@
     <li><a href="services.html">Services</a></li>
     <li><a href="investments.html">Properties</a></li>
     <li><a href="developers.html">Developers</a></li>
-    <li><a href="insights.html">Insights</a></li>
+    <!-- insights hidden -->
     <li><a href="about.html" class="active">About Us</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -223,7 +234,7 @@
   <a href="services.html">Services</a>
   <a href="investments.html">Properties</a>
   <a href="developers.html">Developers</a>
-  <a href="insights.html">Insights</a>
+  <!-- insights hidden -->
   <a href="about.html" class="active">About Us</a>
   <a href="careers.html">Careers</a>
   <a href="contact.html">Contact Us</a>
@@ -241,6 +252,7 @@
 
     <!-- Phase 1: Title + 17 years stat -->
     <div class="phase active" id="phase1">
+      <div class="glass-text">
       <div class="phase-eyebrow">Capstone Invest Group</div>
       <h1 class="phase-title"><em>About</em><br>Us</h1>
       <div class="phase-stat-row">
@@ -248,19 +260,24 @@
         <div class="phase-stat-label">Years of<br>Expertise</div>
       </div>
       <p class="phase-desc">Headquartered in London's Canary Wharf, with a presence in Singapore. A trusted partner at every stage of the asset lifecycle.</p>
+      </div>
     </div>
 
     <!-- Phase 2: What we do intro -->
     <div class="phase" id="phase2">
+      <div class="glass-text">
       <div class="phase-eyebrow">What We Do · Core Services</div>
       <h2 class="phase-title" style="font-size:clamp(2.2rem,5vw,5rem)">Three Specialist<br>Disciplines.<br><em>One Standard</em><br>of Excellence.</h2>
+      </div>
     </div>
 
     <!-- Phase 3: Services intro -->
     <div class="phase" id="phase3">
+      <div class="glass-text">
       <div class="phase-eyebrow">Off-Plan · Off-Market · Corporate Relocation</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4vw,4rem)">Precision Access<br>to <em>Exceptional</em><br>Opportunities</h2>
       <p class="phase-desc">From curated off-plan developments and exclusive off-market assets to bespoke corporate relocation services — every opportunity is rigorously vetted before reaching our investors.</p>
+      </div>
     </div>
 
     <!-- Progress indicator -->
@@ -412,7 +429,7 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="investments.html">Properties</a></li>
         <li><a href="developers.html">Developers</a></li>
-        <li><a href="insights.html">Insights</a></li>
+        <!-- insights hidden -->
         <li><a href="about.html">About Us</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact Us</a></li>
