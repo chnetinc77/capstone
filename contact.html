@@ -63,6 +63,17 @@
     .progress-dot{width:4px;height:4px;border-radius:50%;background:rgba(201,168,76,0.3);transition:background 0.3s}
     .progress-dot.active{background:var(--gold)}
 
+
+    /* Frosted glass text */
+    .glass-text {
+      display: inline-block;
+      background: rgba(7,10,18,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 2px;
+    }
+
     /* ── Contact section ── */
     .contact-section{padding:100px 52px 120px;border-top:1px solid var(--line)}
     .contact-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
@@ -156,7 +167,7 @@
     <li><a href="services.html">Services</a></li>
     <li><a href="investments.html">Properties</a></li>
     <li><a href="developers.html">Developers</a></li>
-    <li><a href="insights.html">Insights</a></li>
+    <!-- insights hidden -->
     <li><a href="about.html">About Us</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
@@ -169,7 +180,7 @@
   <a href="services.html">Services</a>
   <a href="investments.html">Properties</a>
   <a href="developers.html">Developers</a>
-  <a href="insights.html">Insights</a>
+  <!-- insights hidden -->
   <a href="about.html">About Us</a>
   <a href="careers.html">Careers</a>
   <a href="contact.html" class="active">Contact Us</a>
@@ -186,15 +197,19 @@
     <div class="video-overlay"></div>
 
     <div class="phase active" id="phase1">
+      <div class="glass-text">
       <div class="phase-eyebrow">Get in Touch</div>
       <h1 class="phase-title">Contact<br><em>Us</em></h1>
       <p class="phase-desc">Our advisory team is available to discuss your requirements in complete confidence.</p>
+      </div>
     </div>
 
     <div class="phase" id="phase2">
+      <div class="glass-text">
       <div class="phase-eyebrow">We Are Here to Guide You</div>
       <h2 class="phase-title" style="font-size:clamp(2rem,4.5vw,4.5rem)">Every Journey<br>Begins with a<br><em>Conversation</em></h2>
       <p class="phase-desc">Whether you are at the earliest stage of consideration or ready to transact, our team is available to guide you through every step of the process with complete discretion.</p>
+      </div>
     </div>
 
     <div class="scroll-progress">
